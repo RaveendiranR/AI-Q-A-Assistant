@@ -1,8 +1,0 @@
-venv/
-__pycache__/
-*.pyc
-.env
-data/*.pdf
-data/documents.json
-vectorstore/*
-!vectorstore/.gitkeep
