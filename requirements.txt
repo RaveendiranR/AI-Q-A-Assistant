@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pypdf
+langchain-core
+langchain-text-splitters
+langchain-community
+sentence-transformers
+faiss-cpu
+requests
+python-dotenv
+pymupdf
+pytesseract
+pillow
+ 
+ 

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Document Q&A Assistant</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">✦</div>
+      <div>
+        <h1>AI Document Q&A</h1>
+        <p>Intermediate RAG Assistant</p>
+      </div>
+    </div>
+
+    <section class="panel">
+      <div class="section-title">Documents</div>
+
+      <label class="upload-area" for="fileInput">
+        <span class="upload-icon">↑</span>
+        <strong>Upload PDF</strong>
+        <small>Maximum 25 MB</small>
+        <input id="fileInput" type="file" accept=".pdf,application/pdf">
+      </label>
+
+      <div id="uploadStatus" class="status"></div>
+      <div id="documentList" class="document-list">
+        <div class="empty-docs">No documents indexed.</div>
+      </div>
+    </section>
+
+    <section class="panel system-panel">
+      <div class="section-title">System</div>
+      <div class="health-row">
+        <span class="dot" id="healthDot"></span>
+        <span id="healthText">Checking API...</span>
+      </div>
+      <div class="system-info">
+        <span>RAG</span><strong>FAISS + MiniLM</strong>
+        <span>LLM</span><strong id="modelName">Ollama</strong>
+      </div>
+    </section>
+
+    <div class="sidebar-footer">
+      Local RAG • FastAPI • FAISS • Hugging Face • Ollama
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <span class="eyebrow">DOCUMENT INTELLIGENCE</span>
+        <h2>Ask your documents</h2>
+      </div>
+      <button id="clearChatBtn" class="ghost-btn">Clear chat</button>
+    </header>
+
+    <section id="chat" class="chat">
+      <div id="welcome" class="welcome">
+        <div class="welcome-icon">✦</div>
+        <h3>Ask questions grounded in your PDFs.</h3>
+        <p>
+          Upload one or more documents, then ask a question.
+          Answers are generated from retrieved document chunks.
+          You can also ask things like "how many times does X appear"
+          or "how many pages" — those are answered directly, without
+          the LLM.
+        </p>
+        <div class="suggestions">
+          <button data-question="What is this document about?">What is this document about?</button>
+          <button data-question="Summarize the main points.">Summarize the main points</button>
+          <button data-question="What are the key concepts mentioned?">Key concepts</button>
+        </div>
+      </div>
+    </section>
+
+    <form id="askForm" class="composer">
+      <input
+        id="questionInput"
+        type="text"
+        maxlength="2000"
+        placeholder="Ask a question about your documents..."
+        autocomplete="off"
+      >
+      <button id="askButton" type="submit">Ask <span>↗</span></button>
+    </form>
+    <div class="composer-hint">Answers are grounded in retrieved document context.</div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
